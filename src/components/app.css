@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Dongle', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vmax;
+    height: 100%;
+    
+}
+
+.section{
+    height: 100%;
+    width:100vmax;
+    
+    display: flex;
+    flex-direction: column;
+   
+    align-items: center;
+}
+
+.coinslist{
+    
+    height: 100%;
+    width:500px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.header{
+    display: grid;
+    place-items: center;
+    height:150px;
+    width:100%;
+     text-align: center;
+     background-color: rgb(212, 164, 61);
+ }
+ .nametag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    gap:25%;
+    width:100%;
+    margin-left: 25px;
+ }
+ .search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    height: 40px;
+    border-radius: 15px;
+    /* box-shadow: 5px 5px 20px #cbced1, 
+    -5px -5px 20px #fff; */
+    
+ }
+.search input{
+    width:100%;
+    height: 70%;
+    border: none;
+    border-radius: 5px;
+    margin-left:10%;
+    margin-right: 10%;
+   font-size: 1.5rem;
+    outline: none;
+}
+.search input::placeholder{
+    text-align: center;
+    font-size: 1.5rem;
+   
+}
+
+ .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:60px;
+    height:100%;
+    margin-right: 15px;
+   
+ }
+
+ .nametag h4{
+     font-size: 1.6rem;
+ }
+ 
