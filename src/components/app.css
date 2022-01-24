@@ -24,7 +24,7 @@ body{
     
     display: flex;
     flex-direction: column;
-   
+   scroll-behavior: smooth;
     align-items: center;
 }
 
@@ -44,7 +44,7 @@ body{
     height:150px;
     width:100%;
      text-align: center;
-     background-color: rgb(212, 164, 61);
+     background-color: rgb(211, 151, 62);
  }
  .nametag{
     display: flex;
