@@ -25,12 +25,15 @@ const App=()=> {
      
   },[])
 
+  
+
   return (
     <div className="section">
       <div className="header">
-         <h1>Crypto Currency</h1>
+         <h1>{coinslist.length-1}Crypto Currency.eth</h1>
+         
          <div className="search">
-           <input type="text" placeholder="Tether.." onChange={(e)=>{
+           <input type="text" placeholder="Search here...." onChange={(e)=>{
               setsearchword(e.target.value)
            }}/>
           <div className="icon"><icon.FiSearch/></div>
@@ -42,12 +45,7 @@ const App=()=> {
       <h4>Currency</h4>
       <h4>Price(usdt)</h4>
     </div>
-    {filtercoins.map((coin)=>{
-      return(
-        <Coin coin={coin} key={coin.id}/>
-      )
-    })
-  }
+     <Coin coins={filtercoins}/>
   </div>
   </div>
   );

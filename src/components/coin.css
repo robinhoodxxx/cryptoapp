@@ -73,8 +73,9 @@ article{
     justify-content:center;
 }
 .price p{
+    /* font-family: sans-serif; */
     height: 40px;
-    width: 110px;
+    width: 120px;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
     text-align: center;
@@ -86,3 +87,8 @@ article{
     font-weight:500;
 }
 
+.coins{
+   width: 100%;
+   height: 100%;
+   
+}
