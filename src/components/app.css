@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
 
+:root{
+    --primary:rgb(211, 151, 62);
+}
 
 *{
     margin: 0;
@@ -29,31 +32,41 @@ body{
 .coinslist{
     
     height:100%;
-    width:500px;
+    width:50%;
   
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
+
+@media only screen and (max-width: 1000px){
+    .coinslist{
+        width: 100%;
+    }
+   .nametag h4{
+       font-size: 1.2rem ;
+   }
+    
+}
+
 .header{
     display: grid;
     place-items: center;
     height:150px;
     width:100%;
      text-align: center;
-     background-color: rgb(211, 151, 62);
+     background-color: var(--primary);
+     color: #fff;
  }
  .nametag{
-    display: flex;
-    justify-content: center;
+    display:flex;
     align-items: center;
-    height: 50px;
-    gap:25%;
-    width:100%;
-    padding-left: 25px;
-   
-    
+    justify-content: space-around;
+   color: var(--primary);
+    width: 100%;
+   padding-left: -70px;
+  height: 50px;
  }
  .search{
     display: flex;
@@ -62,7 +75,7 @@ body{
     background-color: rgb(255, 255, 255);
     width: 40%;
     height: 40px;
-    border-radius: 15px;
+    border-radius: 5px;
     
     
  }
@@ -89,10 +102,13 @@ body{
     width:60px;
     height:100%;
     margin-right: 15px;
+    color: var(--primary);
    
  }
 
  .nametag h4{
-     font-size: 1.6rem;
+     font-size: 1.5rem;
+     
+
  }
  

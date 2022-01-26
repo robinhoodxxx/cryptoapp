@@ -1,29 +1,40 @@
-
+:root{
+    --width:20%;
+    --feature:5;
+}
 
 article{
     width: 100%;
     height:90px;
-    
     display: flex;
-   
     align-items: center;
     justify-content:center;
-   
     gap: 10%;
-   
-    background-color: #ecf0f3;
-    
+    background-color: #ecf0f3;  
     margin-bottom: 10px;
     border-radius: 10px;
+}
+@media only screen and (max-width: 1000px){
+    article{
+        gap: 5%;
+    }
+}
+
+@media only screen and (max-width: 600px){
+   
+   .symbol img{
+    width:30px;
+    height:30px;
+   }
 }
 
 .symbol{
     height: 100%;
-    width:30%;
+    width:var(--width);
     display: flex;
     align-items: center;
     justify-content:center;
-    
+   
 }
 .img{
     height: 70px;
@@ -50,23 +61,37 @@ article{
     align-items: center;
     justify-content: center;
     height:100%;
-    width:30%;
-    
+    width:var(--width);
+   
     
 }
-.name h3{
+.name a{
+  padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
    font-size: 1.8rem; 
-   line-height: 20px;
+   line-height: 18px;
    text-align: center;
-   margin-bottom: 10px;
+   height: 60%;
+   color: black;
+   text-decoration: none;
+   font-weight: 600;
+   cursor: pointer;
+}
+.name a:hover{
+    color: rgb(230, 161, 57);
 }
 .name h6{
+   
     font-size: 1rem;
     text-align: center;
+    height: 40%;
+    
 }
 .price{
     height:100%;
-    width:30%;
+    width:var(--width);
     display: flex;
    
     align-items: center;
@@ -75,7 +100,7 @@ article{
 .price p{
     
     height: 40px;
-    width: 120px;
+    width: 140px;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
     text-align: center;
@@ -91,4 +116,27 @@ article{
    width: 100%;
    height: 100%;
    
+}
+
+.changePrice{
+    height:100%;
+    width:var(--width);
+    display: flex;
+   
+    align-items: center;
+    justify-content:center;
+}
+.changePrice p{
+    
+    height: 40px;
+    width: 80px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.4rem;
+    display: grid;
+    place-items: center;
+    box-shadow: 13px 13px 20px #cbced1, 
+    -13px -13px 20px #fff;
+    font-weight:500;
 }

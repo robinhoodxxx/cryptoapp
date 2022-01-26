@@ -3,21 +3,25 @@ import   Axios  from 'axios';
 import Coin from './components/Coin'
 import './components/app.css'
 import * as icon from  "react-icons/fi";
+import Spinner from "./components/Spinner";
 const App=()=> {
 
   const [coinslist, setCoinslist] = useState([])
 
   const[searchword,setsearchword]=useState("")
 
+  const[loading,setloading]=useState(false)
+
   const filtercoins= coinslist.filter((coin)=>{
     return coin.name.toLowerCase().includes(searchword.toLowerCase())
   })
 
   useEffect(() => {
-   Axios.get("https://api.coinstats.app/public/v1/coins?skip=0")
+   Axios.get("https://api.coinstats.app/public/v1/coins")
 
    .then((response)=>{setCoinslist(response.data.coins)
-    
+
+    setloading(true)
    })
    
 
@@ -30,7 +34,7 @@ const App=()=> {
   return (
     <div className="section">
       <div className="header">
-         <h1>{coinslist.length-1}Crypto Currency.eth</h1>
+         <h1>{coinslist.length-1}CryptoCurrency.eth</h1>
          
          <div className="search">
            <input type="text" placeholder="Search here...." onChange={(e)=>{
@@ -44,8 +48,11 @@ const App=()=> {
       <h4>Symbol</h4>
       <h4>Currency</h4>
       <h4>Price(usdt)</h4>
+      <h4>priceChange(1D)</h4>
     </div>
-     <Coin coins={filtercoins}/>
+     
+     {loading ?<Coin coins={filtercoins}/>:<Spinner/>}
+     
   </div>
   </div>
   );
