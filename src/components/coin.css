@@ -1,6 +1,7 @@
 :root{
     --width:20%;
     --feature:5;
+    --primary:rgb(236, 160, 18);;
 }
 
 article{
@@ -14,6 +15,18 @@ article{
     margin-bottom: 10px;
     border-radius: 10px;
 }
+
+
+@media only screen and (min-width: 1000px){
+     
+    article p:hover{
+        font-weight: 600;
+        transition: .2s;
+        font-size: 1.6rem;
+        color: var(--primary);
+    }
+}
+
 @media only screen and (max-width: 1000px){
     article{
         gap: 5%;
@@ -78,9 +91,12 @@ article{
    text-decoration: none;
    font-weight: 600;
    cursor: pointer;
+   transition: .2s;
 }
 .name a:hover{
-    color: rgb(230, 161, 57);
+    color:var(--primary) ;
+    padding-bottom: 5px;
+    transition: .2s;
 }
 .name h6{
    
