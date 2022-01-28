@@ -16,22 +16,38 @@ const App=()=> {
     return coin.name.toLowerCase().includes(searchword.toLowerCase())
   })
 
+ 
+
+  const fetchcoins=async()=>{
+    try{
+    const res= await Axios.get("https://api.coinstats.app/public/v1/coins")
+    return res.data}
+    catch(err){
+      console.log(err)
+    }
+  }
+  
+  const fetching=()=>{
+    fetchcoins().then(data=>{
+      setCoinslist(data.coins)
+      setloading(true)
+    }).catch(err=> {
+      setloading(false)
+    }) 
+    console.log("fecthing")
+  }
+
+
   useEffect(() => {
-   Axios.get("https://api.coinstats.app/public/v1/coins")
-
-   .then((response)=>{setCoinslist(response.data.coins)
-
-    setloading(true)
-   })
-   
-
-    .catch((err)=>console.log(err))
+      
+   fetching()
      
   },[])
 
   
 
   return (
+    
     <div className="section">
       <div className="header">
          <h1>{coinslist.length-1}CryptoCurrency.eth</h1>
@@ -51,7 +67,7 @@ const App=()=> {
       <h4>priceChange(1D)</h4>
     </div>
      
-     {loading ?<Coin coins={filtercoins}/>:<Spinner/>}
+     {loading ?<Coin coins={filtercoins} fetch={fetching}/>:<Spinner/>}
      
   </div>
   </div>
