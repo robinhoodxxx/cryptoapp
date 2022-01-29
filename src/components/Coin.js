@@ -1,20 +1,9 @@
 
-import { useState } from 'react'
 import './coin.css'
 
-const Coin=({coins})=> {
+const Coin=({coins,removing})=> {
 
-  
 
-  const [deletecoins,setdeletecoins]=useState(coins)
-
-  const remove=(id)=>{
-    const removedcoins=deletecoins.filter((coin)=>{
-    return coin.id !==id
-  })
-  
-  setdeletecoins(removedcoins)
-}
 
 
 
@@ -37,7 +26,7 @@ const Coin=({coins})=> {
             </div>
             <div className='name'>
             <a href={websiteUrl} target="_blank" rel="noopener noreferrer" title={websiteUrl}>{name}</a>
-            <h6 onClick={()=>remove(id) } title='Delete'>{symbol}</h6>
+            <h6 onClick={()=>removing(id) } title='Delete'>{symbol}</h6>
             </div>
            <div className="price">
            <p title='price'>${Math.round(price*1000000)/1000000} </p>

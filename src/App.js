@@ -12,9 +12,19 @@ const App=()=> {
 
   const[loading,setloading]=useState(false)
 
+  const defaultcoins=coinslist
+
   const filtercoins= coinslist.filter((coin)=>{
     return coin.name.toLowerCase().includes(searchword.toLowerCase())
   })
+
+  const remove=(id)=>{
+    const removedcoins=filtercoins.filter((coin)=>{
+    return coin.id !==id
+  })
+  
+  setCoinslist(removedcoins)
+}
 
  
 
@@ -29,12 +39,13 @@ const App=()=> {
   
   const fetching=()=>{
     fetchcoins().then(data=>{
+    
       setCoinslist(data.coins)
       setloading(true)
     }).catch(err=> {
       setloading(false)
     }) 
-    console.log("fecthing")
+    
   }
 
 
@@ -52,6 +63,12 @@ const App=()=> {
       <div className="header">
          <h1>{coinslist.length-1}CryptoCurrency.eth</h1>
          
+           {/* <select>
+             <option  value="" defaultChecked>Market Cap</option>
+             <option value="">price High to low</option>
+             <option value="">price Low to High</option>
+           </select> */}
+         
          <div className="search">
            <input type="text" placeholder="Search here...." onChange={(e)=>{
               setsearchword(e.target.value)
@@ -67,7 +84,7 @@ const App=()=> {
       <h4>priceChange(1D)</h4>
     </div>
      
-     {loading ?<Coin coins={filtercoins} fetch={fetching}/>:<Spinner/>}
+     {loading ?<Coin coins={filtercoins} removing={remove}/>:<Spinner/>}
      
   </div>
   </div>

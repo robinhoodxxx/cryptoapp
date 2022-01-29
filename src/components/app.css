@@ -111,4 +111,14 @@ body{
      
 
  }
- 
+ select{
+     width: 200px;
+     height: 30px;
+     text-align: center;
+     font-size: 1.5rem;
+     
+     border-radius: 5px;
+     outline: none;
+     color: rgb(61, 55, 55);
+     background-color: #fff;
+ }
