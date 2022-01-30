@@ -1,11 +1,13 @@
 import Coin from "./Coin"
-import './app.css'
+import './styles/coin.css'
 import Refresh from "./Refresh";
 
 
 
 
 export default function Coins({filtercoins,remove,fetching}) {
+
+
   return(
   <div className="coinslist">
   <div className="nametag">

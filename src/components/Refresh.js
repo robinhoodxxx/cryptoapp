@@ -1,4 +1,4 @@
-import './refresh.css'
+import './styles/refresh.css'
 
 const Refresh=({fetching})=> {
 

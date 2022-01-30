@@ -1,5 +1,5 @@
 
-import './coin.css'
+import './styles/coin.css'
 
 const Coin=({coins,removing})=> {
 

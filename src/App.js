@@ -1,23 +1,51 @@
 import { useEffect,useState } from "react";
-import   Axios  from 'axios';
 import Coins from './components/Coins'
-import './components/app.css'
+import './components/styles/app.css'
 import * as icon from  "react-icons/fi";
 
 import Spinner from "./components/Spinner";
+import useFetch from "./components/useFetch";
 
 const App=()=> {
 
+
+  const url=' https://api.coinstats.app/public/v1/coins'
+  
+ // const {data,loading,error}=useFetch(url)
   const [coinslist, setCoinslist] = useState([])
 
   const[searchword,setsearchword]=useState("")
 
   const[loading,setloading]=useState(false)
 
-  
 
-  const filtercoins= coinslist.filter((coin)=>{
-    return coin.name.toLowerCase().includes(searchword.toLowerCase())
+    const fetching=()=>{
+      setloading(false)
+      fetch(url)
+    .then(res=>{
+        if(!res.ok){
+            setloading(false)
+            
+            console.log('waiting for response')
+        }
+        return res.json()})
+        .then(data=>{setCoinslist(data.coins)
+        setloading(true)})
+        .catch(err=> seterror(err))
+    }
+      
+  useEffect(()=>{
+   
+ 
+  fetching()
+
+  },[])
+   
+
+
+
+   const filtercoins= coinslist.filter((coin)=>{
+    return coin.name.toLowerCase().includes(searchword.toLowerCase())||coin.symbol.toLowerCase().includes(searchword.toLowerCase())
   })
 
   const remove=(id)=>{
@@ -28,35 +56,6 @@ const App=()=> {
   setCoinslist(removedcoins)
 }
 
- 
-
-  const fetchcoins=async()=>{
-    setloading(false)
-    try{
-    const res= await Axios.get("https://api.coinstats.app/public/v1/coins")
-    return res.data}
-    catch(err){
-      console.log(err)
-    }
-  }
-  
-  const fetching=()=>{
-    fetchcoins().then(data=>{
-    
-      setCoinslist(data.coins)
-      setloading(true)
-    }).catch(err=> {
-      console.log(err)
-    }) 
-    
-  }
-
-
-  useEffect(() => {
-      
-   fetching()
-     
-  },[])
 
 
   
