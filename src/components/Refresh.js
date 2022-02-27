@@ -1,14 +1,13 @@
 import './styles/refresh.css'
 
-const Refresh=({fetching})=> {
+const Refresh = ({ fetching }) => {
 
 
 
   return (
-  <div className='refresh'>
-        
-        <button onClick={fetching}>Refresh</button>
-  </div>
+    <div className='refresh'>
+      <button onClick={fetching}>Refresh</button>
+    </div>
   )
 }
 

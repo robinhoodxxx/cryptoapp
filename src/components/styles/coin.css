@@ -23,7 +23,7 @@ article{
         font-weight: 600;
         transition: .2s;
         font-size: 1.6rem;
-        color: var(--primary);
+      
     }
 }
 
@@ -138,7 +138,8 @@ article{
 
 .coins{
    width: 100%;
-   height: 100%;
+  height: 100%;
+
    
 }
 
@@ -162,6 +163,12 @@ article{
     place-items: center;
     box-shadow: 13px 13px 20px #cbced1, 
     -13px -13px 20px #fff;
-    font-weight:500;
+    font-weight:600;
+}
+.green{
+    color:rgb(4, 167, 4)
+}
+.red{
+    color:rgb(243, 11, 11)
 }
 
