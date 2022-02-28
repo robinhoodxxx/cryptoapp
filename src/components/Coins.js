@@ -5,7 +5,7 @@ import Refresh from "./Refresh";
 
 
 
-export default function Coins({ filtercoins, remove, fetching }) {
+export default function Coins({ filtercoins, coinslistState, fetching }) {
 
 
   return (
@@ -13,11 +13,11 @@ export default function Coins({ filtercoins, remove, fetching }) {
       <div className="nametag">
         <h4 >Symbol</h4>
         <h4>Currency</h4>
-        <h4>Price(usdt)</h4>
-        <h4>priceChange(1D)</h4>
+        <h4>Price($)</h4>
+        <h4>Change(1D)</h4>
       </div>
 
-      {filtercoins.length !== 0 ? <Coin coins={filtercoins} removing={remove} /> : <Refresh fetching={fetching} />}
+      {filtercoins.length !== 0 ? <Coin coins={filtercoins} coinslistState={coinslistState} /> : <Refresh fetching={fetching} />}
 
 
     </div>

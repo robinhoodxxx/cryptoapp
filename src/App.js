@@ -6,6 +6,7 @@ import Axios from "axios";
 import Spinner from "./components/Spinner";
 import useFetch from "./components/useFetch";
 import Dropdown from "./components/Dropdown";
+import { MdDeleteOutline } from "react-icons/md";
 
 
 const App = () => {
@@ -56,71 +57,14 @@ const App = () => {
     return coin.name.toLowerCase().includes(searchword.toLowerCase()) || coin.symbol.toLowerCase().includes(searchword.toLowerCase())
   })
 
-  const remove = (id) => {
-    const removedcoins = filtercoins.filter((coin) => {
-      return coin.id !== id
-    })
-
-    setCoinslist(removedcoins)
-  }
+  
  
-  const dropdown=(value)=>{
-     
-    if(value==='1'){
-    
-        marketcap();
-    }else if(value==='2'){
-      DecendingPrice()
-    }else if(value==='3'){
-      AscendingPrice()
-    }else if(value==='4'){
-      pricechangeup()
-    }else{
-      pricechangedown()
-    }
+ 
+
+  const DropdownFilter=(arr)=>{
+    setCoinslist(arr)
   }
 
-//sorting algo for dropdowns
-
-  const AscendingPrice = () => {
-    const sort = filtercoins.sort((a, b) => {
-      return a.price - b.price;
-    })
-    
-    setCoinslist(sort)
-  }
-
-  const DecendingPrice = () => {
-    const sort = filtercoins.sort((b,a) => {
-      return a.price - b.price;
-    })
-    setCoinslist(sort)
-
-  }
-
-  const marketcap=()=>{
-    const sort = filtercoins.sort((b,a) => {
-      return a.marketCap - b.marketCap;
-    })
-    setCoinslist(sort)
-  }
-
-  const pricechangeup =()=>{
-    const sort = filtercoins.sort((b,a) => {
-      return a.priceChange1d - b.priceChange1d;
-    })
-    setCoinslist(sort)
-  }
-  
-  const pricechangedown =()=>{
-    const sort = filtercoins.sort((a,b) => {
-      return a.priceChange1d - b.priceChange1d;
-    })
-    setCoinslist(sort)
-  }
-  
-
-//ALGOS FINISHED
 
 
   return (
@@ -130,17 +74,19 @@ const App = () => {
         <h1>{coinslist.length - 1}CryptoCurrency.eth</h1>
 
 
-        <Dropdown dropdown={dropdown}/>
+        <Dropdown filtercoins={filtercoins} coinslistState={DropdownFilter}/>
         <div className="search">
+        <div className='icon'><icon.FiSearch /></div>
           <input type="text" placeholder="Search here...." onChange={(e) => {
             setsearchword(e.target.value)
           }} />
-          <div className='icon' onClick={() => setCoinslist([])}><icon.FiSearch /></div>
+          <div className='icon' style={{color:'red'}}onClick={() => setCoinslist([])}><MdDeleteOutline/></div>
 
-
+           
         </div>
+        
       </div>
-      {loading ? <Coins filtercoins={filtercoins} remove={remove} fetching={fetching} /> : <Spinner />}
+      {loading ? <Coins filtercoins={filtercoins} coinslistState={DropdownFilter} fetching={fetching} /> : <Spinner />}
     </div>
   );
 }
