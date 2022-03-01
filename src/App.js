@@ -80,7 +80,7 @@ const App = () => {
           <input type="text" placeholder="Search here...." onChange={(e) => {
             setsearchword(e.target.value)
           }} />
-          <div className='icon' style={{color:'red'}}onClick={() => setCoinslist([])}><MdDeleteOutline/></div>
+          <div className='icon'  title="DeleteCoins" style={{color:'red'}}onClick={() => setCoinslist([])}><MdDeleteOutline/></div>
 
            
         </div>
