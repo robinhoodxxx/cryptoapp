@@ -14,7 +14,7 @@ const App = () => {
 
   const url = ' https://api.coinstats.app/public/v1/coins'
 
-  // const {data,loading,error}=useFetch(url)
+   //const [data,load,error]=useFetch(url)
   const [coinslist, setCoinslist] = useState([])
 
   const [searchword, setsearchword] = useState("")
@@ -30,30 +30,33 @@ const App = () => {
       const res = await Axios.get(url)
       const data=await res.data.coins;
      // console.log(data)
-      return data
+      setCoinslist(data)
+      setloading(true)
+      return
 
     }
     catch (err) {
-      setloading(false)
+      
       console.log(err)
     }
   }
 
 
-  const fetching = () => { fetch().then(data => { setCoinslist(data); setloading(true) }).catch(err => console.log(err)) }
+  
 
 
 
   useEffect(() => {
 
-    fetching()
+    fetch()
+   
 
   }, [])
 
 
 
 
-  const filtercoins = coinslist.filter((coin) => {
+  const filtercoins=  coinslist.filter((coin) => {
     return coin.name.toLowerCase().includes(searchword.toLowerCase()) || coin.symbol.toLowerCase().includes(searchword.toLowerCase())
   })
 
@@ -61,9 +64,7 @@ const App = () => {
  
  
 
-  const DropdownFilter=(arr)=>{
-    setCoinslist(arr)
-  }
+  
 
 
 
@@ -74,7 +75,7 @@ const App = () => {
         <h1>{coinslist.length - 1}CryptoCurrency.eth</h1>
 
 
-        <Dropdown filtercoins={filtercoins} coinslistState={DropdownFilter}/>
+        <Dropdown filtercoins={filtercoins} coinslistState={setCoinslist}/>
         <div className="search">
         <div className='icon'><icon.FiSearch /></div>
           <input type="text" placeholder="Search here...." onChange={(e) => {
@@ -86,7 +87,7 @@ const App = () => {
         </div>
         
       </div>
-      {loading ? <Coins filtercoins={filtercoins} coinslistState={DropdownFilter} fetching={fetching} /> : <Spinner />}
+      {loading ? <Coins filtercoins={filtercoins} coinslistState={setCoinslist} fetching={fetch} /> : <Spinner />}
     </div>
   );
 }
