@@ -28,7 +28,7 @@ const App = () => {
     setloading(false)
     try {
       const res = await Axios.get(url)
-      const data=await res.data.coins;
+      const data= res.data.coins;
      // console.log(data)
       setCoinslist(data)
       setloading(true)
