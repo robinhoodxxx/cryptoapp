@@ -14,57 +14,57 @@ const App = () => {
 
   const url = ' https://api.coinstats.app/public/v1/coins'
 
-   //const {data,load,error,fetch}=useFetch(url)
+  //const {data,load,error,fetch}=useFetch(url)
   const [coinslist, setCoinslist] = useState([])
 
   const [searchword, setsearchword] = useState("")
 
   const [loading, setloading] = useState(false)
 
-  
+
 
 
   const fetch = async () => {
     setloading(false)
     try {
       const res = await Axios.get(url)
-      const data= res.data.coins;
-     // console.log(data)
+      const data = res.data.coins;
+      // console.log(data)
       setCoinslist(data)
       setloading(true)
       return
 
     }
     catch (err) {
-      
+
       console.log(err)
     }
   }
 
 
-  
+
 
 
 
   useEffect(() => {
 
     fetch()
-   
+
 
   }, [])
 
 
 
 
-  const filtercoins=  coinslist.filter((coin) => {
+  const filtercoins = coinslist.filter((coin) => {
     return coin.name.toLowerCase().includes(searchword.toLowerCase()) || coin.symbol.toLowerCase().includes(searchword.toLowerCase())
   })
 
-  
- 
- 
 
-  
+
+
+
+
 
 
 
@@ -74,18 +74,20 @@ const App = () => {
       <div className="header">
         <h1>{coinslist.length - 1}CryptoCurrency.eth</h1>
 
+        <Dropdown filtercoins={filtercoins} coinslistState={setCoinslist} />
 
-        <Dropdown filtercoins={filtercoins} coinslistState={setCoinslist}/>
         <div className="search">
-        <div className='icon'><icon.FiSearch /></div>
-          <input type="text" placeholder="Search here...." onChange={(e) => {
-            setsearchword(e.target.value)
-          }} />
-          <div className='icon'  title="DeleteCoins" style={{color:'red'}}onClick={() => setCoinslist([])}><MdDeleteOutline/></div>
+          <div className='icon'><icon.FiSearch /></div>
 
-           
+          <input
+           type="text"
+           placeholder="Search here...."
+           onChange={(e) => { setsearchword(e.target.value) }} 
+          />
+
+          <div className='icon' title="DeleteCoins" style={{ color: 'red' }} onClick={() => setCoinslist([])}><MdDeleteOutline /></div>
         </div>
-        
+
       </div>
       {loading ? <Coins filtercoins={filtercoins} coinslistState={setCoinslist} fetching={fetch} /> : <Spinner />}
     </div>

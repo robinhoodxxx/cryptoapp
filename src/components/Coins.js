@@ -5,7 +5,7 @@ import Refresh from "./Refresh";
 
 
 
-export default function Coins({ filtercoins, coinslistState, fetching }) {
+const Coins=({ filtercoins, coinslistState, fetching })=> {
 
 
   return (
@@ -21,6 +21,7 @@ export default function Coins({ filtercoins, coinslistState, fetching }) {
 
 
     </div>
-    )
+  )
 
 }
+export default Coins

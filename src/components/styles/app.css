@@ -130,3 +130,13 @@ body{
      color: rgb(61, 55, 55);
      background-color: #fff;
  }
+ @media only screen and (max-width:1000px){
+     .search{
+         width:350px;
+     }
+ }
+ @media only screen and (max-width:400px){
+     .search{
+         width:260px;
+     }
+ }
