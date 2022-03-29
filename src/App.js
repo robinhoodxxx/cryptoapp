@@ -14,7 +14,7 @@ const App = () => {
 
   const url = ' https://api.coinstats.app/public/v1/coins'
 
-   //const [data,load,error]=useFetch(url)
+   //const {data,load,error,fetch}=useFetch(url)
   const [coinslist, setCoinslist] = useState([])
 
   const [searchword, setsearchword] = useState("")
