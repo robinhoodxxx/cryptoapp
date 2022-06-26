@@ -5,18 +5,19 @@ const Dropdown = ({ filtercoins, coinslistState }) => {
 
   const dropdown = (value) => {
 
-    if (value === '2') {
-      DecendingPrice()
-    } else if (value === '3') {
-      AscendingPrice()
-    } else if (value === '4') {
-      pricechangeup()
-    } else if (value === '5') {
-      pricechangedown()
+    switch (value) {
+      case '2': DecendingPrice()
+        break;
+      case '3': AscendingPrice()
+        break;
+      case '4': pricechangeup()
+        break;
+      case '5': pricechangedown()
+        break;
+
+        dafault: marketcap();
     }
-    else {
-      marketcap();
-    }
+
   }
 
   //sorting algo for dropdowns
