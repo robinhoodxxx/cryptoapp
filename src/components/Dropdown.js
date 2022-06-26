@@ -15,7 +15,7 @@ const Dropdown = ({ filtercoins, coinslistState }) => {
       case '5': pricechangedown()
         break;
 
-        dafault: marketcap();
+      default: marketcap();
     }
 
   }

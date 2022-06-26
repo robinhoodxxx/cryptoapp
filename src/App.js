@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Coins from './components/Coins'
 import './components/styles/app.css'
 import * as icon from "react-icons/fi";
@@ -56,7 +56,8 @@ const App = () => {
 
 
 
-  const filtercoins = coinslist.filter((coin) => {
+  
+    const filtercoins =coinslist.filter((coin) => {
     return coin.name.toLowerCase().includes(searchword.toLowerCase()) || coin.symbol.toLowerCase().includes(searchword.toLowerCase())
   })
 
