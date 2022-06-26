@@ -58,7 +58,15 @@ const App = () => {
 
   
     const filtercoins =coinslist.filter((coin) => {
+      
+     
+      if(!searchword){
+        return coinslist
+      } 
+      
     return coin.name.toLowerCase().includes(searchword.toLowerCase()) || coin.symbol.toLowerCase().includes(searchword.toLowerCase())
+    
+    
   })
 
 
