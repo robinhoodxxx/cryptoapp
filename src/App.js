@@ -94,7 +94,7 @@ const App = () => {
            onChange={(e) => { setsearchword(e.target.value) }} 
           />
 
-          <div className='icon' title="DeleteCoins" style={{ color: 'red' }} onClick={() => setCoinslist([])}><MdDeleteOutline /></div>
+          <div className='icon' title="DeleteAllCoins" style={{ color: 'red' }} onClick={() => setCoinslist([])}><MdDeleteOutline /></div>
         </div>
 
       </div>
