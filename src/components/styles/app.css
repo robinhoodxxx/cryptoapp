@@ -23,29 +23,27 @@ body{
 .section{
     height: 100%;
     width:100vw;
-   
     display: flex;
     flex-direction: column;
    scroll-behavior: smooth;
     align-items: center;
+    
 }
 
-.coinslist{
+/* .coinslist{
     
     height:90%;
     width:50%;
-    margin-top:150px;
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-}
+    
+} */
 
 @media only screen and (max-width: 1000px){
-    .coinslist{
-        width: 100%;
-    }
+    
    .nametag h4{
        font-size: 1.2rem ;
    }
@@ -55,27 +53,28 @@ body{
 .header{
     display: grid;
     place-items: center;
-    height:20%;
+  
     width:100vw;
-    position:fixed;
+    position:sticky;
+    top: 0;
+    left: 0; 
      text-align: center;
      background-color: var(--primary);
      color: #fff;
-     margin-left: -20px;
-     margin-right: -20px;
      z-index: 1;
+    
  }
- .nametag{
-    display:flex;
+
+
+  .nametag{
+    display: flex;
+    width: 585px;
+   
+    padding:  0 10px 0 10px;
+    justify-content: space-between;
     align-items: center;
-  
-    justify-content: space-around;
-   color: var(--primary);
-    width: 100%;
-   padding-left: -70px;
-  height: 50px;
-  
- }
+}
+
  .search{
     display: flex;
     justify-content: center;
@@ -84,6 +83,8 @@ body{
     width: 40%;
     height: 40px;
     border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     
     
  }
@@ -135,9 +136,15 @@ body{
      .search{
          width:350px;
      }
+     .nametag{
+        width: 450px;
+     }
  }
  @media only screen and (max-width:400px){
      .search{
          width:260px;
+     }
+     .nametag{
+        width: 280px;
      }
  }

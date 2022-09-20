@@ -17,7 +17,11 @@ const Coin = ({ coins, coinslistState }) => {
 
 
   return (
-    <div className="coins">
+    <section>
+
+      
+
+      <div className='coins'>
 
       {
         coins.map((coin) => {
@@ -43,14 +47,15 @@ const Coin = ({ coins, coinslistState }) => {
               </div>
 
               <div className="changePrice">
-                <p className={priceChange1d > 0 ? 'green' : 'red'} style={{ color: '' }} title='priceChangeIn 1 day'>{priceChange1d}%</p>
+                <p className={priceChange1d>0? 'green':'red'} title='priceChangeIn 1 day'>{priceChange1d}%</p>
               </div>
 
             </article>
           )
         })
       }
-    </div>
+      </div>
+      </section>
   )
 
 
