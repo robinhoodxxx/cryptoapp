@@ -55,6 +55,7 @@ const Coin = ({ coins, coinslistState }) => {
         })
       }
       </div>
+      <footer>&copy; Copyright 2022 tanesh.karrothu</footer>
       </section>
   )
 
