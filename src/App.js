@@ -28,22 +28,25 @@ const App = () => {
   
 
 
+
   const fetch = async () => {
-    setloading(false)
-    try {
-      const res = await Axios.get(url)
-      const data = res.data.coins;
-      // console.log(data)
-      setCoinslist(data)
-      setloading(true)
-      return
-
-    }
-    catch (err) {
-
-      console.log(err)
-    }
+  setloading(false);
+  try {
+    const res = await Axios.get(url, {
+      headers: {
+        'X-API-KEY': process.env.REACT_APP_COINS_API_KEY,
+        'accept': 'application/json',
+      },
+    });
+    const data = res.data.coins;
+    // console.log(data)
+    setCoinslist(data);
+    setloading(true);
+    return;
+  } catch (err) {
+    console.log(err);
   }
+}
 
 
 
