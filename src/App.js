@@ -12,7 +12,7 @@ import { MdDeleteOutline } from "react-icons/md";
 const App = () => {
 
 
-  const url = ' https://api.coinstats.app/public/v1/coins'
+  const url = 'https://openapiv1.coinstats.app/coins'
 
   //const {data,load,error,fetch}=useFetch(url)
   const [coinslist, setCoinslist] = useState([])
