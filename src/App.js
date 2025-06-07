@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState,useRef } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import Coins from './components/Coins'
 import './components/styles/app.css'
 import * as icon from "react-icons/fi";
@@ -21,32 +21,31 @@ const App = () => {
 
   const [loading, setloading] = useState(false)
 
-  const [scroll,setscroll]=useState(false)
+  const [scroll, setscroll] = useState(false)
 
-  const focus  = useRef()
+  const focus = useRef()
 
-  
+
 
 
 
   const fetch = async () => {
-  setloading(false);
-  try {
-    const res = await Axios.get(url, {
-      headers: {
-        'X-API-KEY': process.env.REACT_APP_COINS_API_KEY,
-        'accept': 'application/json',
-      },
-    });
-    const data = res.data.coins;
-    // console.log(data)
-    setCoinslist(data);
-    setloading(true);
-    return;
-  } catch (err) {
-    console.log(err);
+    setloading(false);
+    try {
+      const res = await Axios.get(url, {
+        headers: {
+          'X-API-KEY': process.env.REACT_APP_COINS_API_KEY,
+          'accept': 'application/json',
+        },
+      });
+      const data = res.data.result;
+      setCoinslist(data);
+      setloading(true);
+      return;
+    } catch (err) {
+      console.log(err);
+    }
   }
-}
 
 
 
@@ -63,17 +62,17 @@ const App = () => {
 
 
 
-  
-    const filtercoins =coinslist.filter((coin) => {
-      
-     
-      if(!searchword){
-        return coinslist
-      } 
-      
+
+  const filtercoins = coinslist.filter((coin) => {
+
+
+    if (!searchword) {
+      return coinslist
+    }
+
     return coin.name.toLowerCase().includes(searchword.toLowerCase()) || coin.symbol.toLowerCase().includes(searchword.toLowerCase())
-    
-    
+
+
   })
 
 
@@ -88,35 +87,35 @@ const App = () => {
 
     <div className="section">
       <div className="header">
-       
+
 
         <h1>{coinslist.length - 1}CryptoCurrency.eth</h1>
-        
+
 
         <Dropdown filtercoins={filtercoins} coinslistState={setCoinslist} />
-        
+
         <div className="search">
-          <div className='icon' onClick={()=>focus.current.focus()}>
+          <div className='icon' onClick={() => focus.current.focus()}>
             <icon.FiSearch />
           </div>
 
           <input
-           type="text"
-           ref={focus} 
-           placeholder="Search here...."
-           onChange={(e) => { setsearchword(e.target.value) }} 
+            type="text"
+            ref={focus}
+            placeholder="Search here...."
+            onChange={(e) => { setsearchword(e.target.value) }}
           />
 
           <div className='icon' title="DeleteAllCoins" style={{ color: 'red' }} onClick={() => setCoinslist([])}><MdDeleteOutline /></div>
-        
+
         </div>
-        
+
         <div className='nametag'>
-        <h4 >Symbol</h4>
-        <h4>Currency</h4>
-        <h4>Price($)</h4>
-        <h4>Change(1D)</h4>
-      </div>
+          <h4 >Symbol</h4>
+          <h4>Currency</h4>
+          <h4>Price($)</h4>
+          <h4>Change(1D)</h4>
+        </div>
 
       </div>
       {loading ? <Coins filtercoins={filtercoins} coinslistState={setCoinslist} fetching={fetch} /> : <Spinner />}
